@@ -9,4 +9,6 @@ instant_Drents(sent)
 
 Not perfect, Xander still sounds very properly Dutch. 
 
+* Note: This was a personal exercise to practise using Regular Expressions and the iOS Speech Synthesized voices. This is in no way meant to be disparage towards people from Drenthe or the Drents dialect.*
+
 
