@@ -3,7 +3,7 @@
 import re
 import os
 
-def instant_Drents(text):
+def to_Drents(text):
 	# This function takes in a Dutch text and returns the text with a Drents accent
 	# This is meant as a fun exercise to practise regular expression and has no
 	# intention to make fun of or insult any person speaking Drents.
@@ -11,7 +11,7 @@ def instant_Drents(text):
 	# paard = peerd --- 'aa'+medeklinker -> 'ee'
 	# door = deur --- 'oo'+medeklinker -> 'eu' 
 
-	y_pattern = (r'ij|y') #ij or y
+	y_pattern = (r'ij|y|ei') #ij or y
 	aa_pattern = (r'aa')
 	oo_pattern = (r'oo')
 	y_replace = ('ie')
@@ -21,26 +21,27 @@ def instant_Drents(text):
 	text = re.sub(y_pattern, y_replace, text)
 	text = re.sub(aa_pattern, aa_replace, text)
 	text = re.sub(oo_pattern, oo_replace, text)
-
+	
 	return text
 
-
-if __name__ == "__main__":
-
-
-
-	sent = 'Er loopt een paard over de dijk.'
-	sent2 =	"""
-		Dan komt haar eerste minnaar -- die vroeger klerk was aan 't kopieboek, 
-		maar nu schatryk -- op-eens terug, en trouwt haar.
-		"""
-	
-	drents1 = instant_Drents(sent)
-	drents2 = instant_Drents(sent2)
-
-	items_to_speak = ["Nederlands", sent, "Drents", drents1]
+def instant_Drents(sent):
+	drents = to_Drents(sent.lower())
+	items_to_speak = ["Nederlands", sent, "Drents", drents]
 
 	for item in items_to_speak:
 		bash_command = "say -v Xander {0}".format(item)
 
-		os.system(bash_command)
+		os.system(bash_command)	
+
+
+
+if __name__ == "__main__":
+
+	sent = 'Er loopt een paard over de dijk.'
+	sent2 =	'Mag ik van jou de krant?'
+	sent3 = "Er staat een paard in de wei"
+
+
+	instant_Drents(sent)
+	instant_Drents(sent2)
+	instant_Drents(sent3)
